@@ -1,0 +1,47 @@
+# Python cache/build
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editors / IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Runtime model/cache files
+pretrained_models/
+outputs/_spleeter_temp/
+
+# Generated app data (keep folder skeleton only)
+uploads/*
+!uploads/.gitkeep
+
+outputs/*
+!outputs/.gitkeep
+!outputs/vocals/
+!outputs/instrumental/
+!outputs/voiceovers/
+
+outputs/vocals/*
+!outputs/vocals/.gitkeep
+
+outputs/instrumental/*
+!outputs/instrumental/.gitkeep
+
+outputs/voiceovers/*
+!outputs/voiceovers/.gitkeep
