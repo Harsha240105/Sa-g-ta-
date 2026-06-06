@@ -7,12 +7,11 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 
-import librosa
 import numpy as np
 import soundfile as sf
 from spleeter.separator import Separator
 
-from utils import ensure_directories
+from utils import ensure_directories, get_audio_duration_seconds
 
 
 _SEPARATOR_INSTANCE = None
@@ -77,7 +76,7 @@ def separate_audio_file(input_audio_path: Path, output_root: Path) -> dict:
     shutil.copy2(source_vocals, vocals_output_path)
     shutil.copy2(source_instrumental, instrumental_output_path)
 
-    # Optional cleanup of temporary folder for this file.
+    # Clean up Spleeter's per-file staging folder after copying the final tracks.
     shutil.rmtree(temp_track_dir, ignore_errors=True)
 
     normalize_wav(vocals_output_path)
@@ -87,8 +86,6 @@ def separate_audio_file(input_audio_path: Path, output_root: Path) -> dict:
         "input_path": str(input_audio_path),
         "vocals_path": str(vocals_output_path),
         "instrumental_path": str(instrumental_output_path),
-        "duration_seconds": round(
-            float(librosa.get_duration(path=str(input_audio_path))), 2
-        ),
+        "duration_seconds": round(get_audio_duration_seconds(input_audio_path), 2),
     }
 

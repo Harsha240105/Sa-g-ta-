@@ -1,104 +1,172 @@
-# AI-Based Vocal and Instrument Separation (Streamlit + Spleeter)
+<div align="center">
+  <img src="screenshots/banner.svg" alt="AI Saṅgīta Separator" width="100%">
+</div>
 
-This project lets users upload a song (`.mp3` or `.wav`), separate it into vocals and instrumental tracks using Spleeter, and optionally record a voice-over on top of the instrumental.
+<h1 align="center">🎵 AI Saṅgīta — Vocal & Instrument Separator</h1>
 
-## Features
-- Upload audio in `.mp3` or `.wav`.
-- Separate into two stems:
-  - vocals
-  - instrumental
-- Preview original and processed tracks in the Streamlit UI.
-- Optional microphone voice-over and quick mix export.
-- Auto-save generated files to local output folders.
+<p align="center">
+  <strong>Powered by Spleeter · Built with Streamlit · Pure Python</strong>
+  <br>
+  Upload any song → Split into Vocals & Instrumental → Preview → Download → Record Voice-Over
+</p>
 
-## Tech Stack
-- Python
-- Streamlit
-- Spleeter
-- Librosa
-- SoundFile
-- Pydub
-- NumPy
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.10-blue?style=flat&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/streamlit-1.28-red?style=flat&logo=streamlit" alt="Streamlit">
+  <img src="https://img.shields.io/badge/spleeter-2.4-green?style=flat" alt="Spleeter">
+  <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat" alt="License">
+  <img src="https://img.shields.io/badge/status-active-success?style=flat" alt="Status">
+  <img src="https://img.shields.io/badge/owner-Harsha240105-ff69b4?style=flat&logo=github" alt="Owner">
+</p>
 
-## Project Structure
-```text
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🔐 **Login Page** | Sign in with your Gmail address (no OTP required) |
+| 📤 **Audio Upload** | Upload `.mp3` or `.wav` files via the Streamlit UI |
+| 🧠 **AI Separation** | Split songs into vocals & instrumental using Spleeter deep learning |
+| ▶️ **Preview & Playback** | Listen to original, vocals, and instrumental tracks in-browser |
+| ⬇️ **Download Results** | Download separated files with one click |
+| 🎙️ **Voice-Over Recording** | Record from microphone and overlay on instrumental |
+| 💾 **Auto-Save** | All generated files saved to local output folders |
+| ℹ️ **About / Help Page** | Learn how the app works, tech stack, and usage tips |
+
+---
+
+## 🖼️ App Screenshots
+
+| Page | Preview |
+|------|---------|
+| **Login Page** | ![Login](screenshots/login.png) |
+| **Home Page** | ![Home](screenshots/home.png) |
+| **Audio Upload** | ![Upload](screenshots/audio-upload.png) |
+| **Processing** | ![Processing](screenshots/processing.png) |
+| **Vocal Output** | ![Vocals](screenshots/vocal-output.png) |
+| **Instrumental Output** | ![Instrumental](screenshots/instrumental-output.png) |
+| **Download Results** | ![Download](screenshots/download-results.png) |
+| **About / Help** | ![About](screenshots/about-help.png) |
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| **Python 3.10** | Core programming language |
+| **Streamlit** | Web UI framework |
+| **Spleeter** | Pre-trained model for source separation |
+| **TensorFlow** | Deep learning backend (Spleeter) |
+| **Librosa** | Audio analysis & feature extraction |
+| **SoundFile** | Reading / writing audio files |
+| **Pydub** | Audio format conversion & mixing |
+| **NumPy** | Numerical operations on audio arrays |
+| **Pandas** | Data handling & analysis |
+
+---
+
+## 📁 Project Structure
+
+```
 project/
-|-- app.py
-|-- audio_processing.py
-|-- utils.py
-|-- requirements.txt
-|-- .gitignore
-|-- README.md
-|-- uploads/
-|   `-- .gitkeep
-`-- outputs/
-    |-- .gitkeep
-    |-- vocals/
-    |   `-- .gitkeep
-    |-- instrumental/
-    |   `-- .gitkeep
-    `-- voiceovers/
-        `-- .gitkeep
+├── app.py                  # Main Streamlit application (multi-page)
+├── audio_processing.py     # Spleeter separation logic
+├── utils.py                # Helper utilities
+├── requirements.txt        # Python dependencies
+├── .gitignore
+├── README.md
+├── screenshots/            # Screenshot images & banner
+├── uploads/                # Uploaded audio files
+│   └── .gitkeep
+├── outputs/
+│   ├── vocals/             # Extracted vocal stems
+│   ├── instrumental/       # Extracted instrumental stems
+│   └── voiceovers/         # Mixed voice-over outputs
+└── pretrained_models/      # Spleeter model cache
 ```
 
-## Setup
-1. Open terminal in the `project/` directory.
-2. Create and activate a virtual environment.
+---
+
+## 🚀 Quick Start
+
+### 1. Clone & Enter
+
+```bash
+git clone https://github.com/Harsha240105/Sa-g-ta-.git
+cd Sa-g-ta-
+```
+
+### 2. Virtual Environment
 
 ```bash
 python -m venv .venv
 # Windows
 .venv\Scripts\activate
-# macOS/Linux
+# macOS / Linux
 source .venv/bin/activate
 ```
 
-3. Install dependencies.
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Install FFmpeg (required for MP3 handling and Spleeter audio I/O).
-- Windows: install FFmpeg and ensure `ffmpeg` + `ffprobe` are on `PATH`
-- macOS: `brew install ffmpeg`
-- Ubuntu/Debian: `sudo apt install ffmpeg`
+### 4. Install FFmpeg
 
-## Run
-Use this from inside `project/`:
+| OS | Command |
+|----|---------|
+| **Windows** | Download from [ffmpeg.org](https://ffmpeg.org) and add to `PATH` |
+| **macOS** | `brew install ffmpeg` |
+| **Ubuntu/Debian** | `sudo apt install ffmpeg` |
 
-```bash
-python -m streamlit run app.py
-```
-
-Then open the URL shown in terminal (usually `http://localhost:8501`).
-
-## Usage
-1. Upload a `.mp3` or `.wav`.
-2. Click **Process Audio**.
-3. Listen to original, vocals, and instrumental outputs.
-4. Optionally record voice and click **Create Voice-Over Mix**.
-
-## Notes
-- First run may download Spleeter model weights (internet required once).
-- Python `3.10` is recommended for compatibility with this dependency set.
-- Generated files are saved under `uploads/` and `outputs/`.
-
-## GitHub Upload Checklist
-- Do not upload `.venv/`, model caches, or generated audio files.
-- This repo already includes a `.gitignore` configured for those artifacts.
-- Initialize and push:
+### 5. Run the App
 
 ```bash
-git init
-git add .
-git commit -m "Initial commit: AI vocal and instrumental separator"
-git branch -M main
-git remote add origin <your-github-repo-url>
-git push -u origin main
+streamlit run app.py
 ```
 
-## Future Improvements
-- Add 4-stem/5-stem separation (drums, bass, piano, etc.).
-- Add waveform visualization.
-- Add ZIP download for all generated outputs.
+Open **http://localhost:8501** in your browser.
+
+---
+
+## 📖 Usage Guide
+
+1. **Login** – Enter your Gmail address and click **Login**.
+2. **Home** – Upload an MP3 or WAV file.
+3. **Upload** – Preview the selected audio file.
+4. **Process** – Click **Process Audio** to run Spleeter separation.
+5. **Vocals** – Preview the extracted vocal track.
+6. **Instrumental** – Preview the accompaniment track.
+7. **Download** – Save Original, Vocals, and Instrumental files.
+8. **Voice-Over** – Record from your mic and click **Create Voice-Over Mix**.
+9. **About** – Learn more about the app and tech stack.
+
+---
+
+## ⚠️ Notes
+
+- First run downloads Spleeter model weights (~300 MB, internet required once).
+- Recommended Python version: **3.10** for dependency compatibility.
+- Generated files saved under `uploads/` and `outputs/`.
+- Make sure `ffmpeg` and `ffprobe` are accessible from your terminal.
+
+---
+
+## 👤 Owner
+
+<div align="center">
+  <a href="https://github.com/Harsha240105">
+    <img src="https://img.shields.io/badge/👑%20Owner-Harsha240105-181717?style=for-the-badge&logo=github" alt="Owner">
+  </a>
+  <br>
+  <sub>Built with ❤️ by <a href="https://github.com/Harsha240105">Harsha240105</a></sub>
+</div>
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.

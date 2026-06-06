@@ -10,7 +10,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 
-import librosa
 from pydub import AudioSegment
 
 
@@ -80,7 +79,8 @@ def get_audio_duration_seconds(audio_path: Path) -> float:
     """
     Return audio length in seconds.
     """
-    return float(librosa.get_duration(path=str(audio_path)))
+    audio = AudioSegment.from_file(audio_path)
+    return len(audio) / 1000.0
 
 
 def mix_voice_over_instrumental(
