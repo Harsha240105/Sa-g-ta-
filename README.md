@@ -40,14 +40,14 @@
 
 | Page | Preview |
 |------|---------|
-| **Login Page** | ![Login](screenshots/login.svg) |
-| **Home Page** | ![Home](screenshots/home.svg) |
-| **Audio Upload** | ![Upload](screenshots/audio-upload.svg) |
-| **Processing** | ![Processing](screenshots/processing.svg) |
-| **Vocal Output** | ![Vocals](screenshots/vocal-output.svg) |
-| **Instrumental Output** | ![Instrumental](screenshots/instrumental-output.svg) |
-| **Download Results** | ![Download](screenshots/download-results.svg) |
-| **About / Help** | ![About](screenshots/about-help.svg) |
+| **Login Page** | ![Login](screenshots/login.png) |
+| **Home Page** | ![Home](screenshots/home.png) |
+| **Audio Upload** | ![Upload](screenshots/audio-upload.png) |
+| **Processing** | ![Processing](screenshots/processing.png) |
+| **Vocal Output** | ![Vocals](screenshots/vocal-output.png) |
+| **Instrumental Output** | ![Instrumental](screenshots/instrumental-output.png) |
+| **Download Results** | ![Download](screenshots/download-results.png) |
+| **About / Help** | ![About](screenshots/about-help.png) |
 
 ---
 
