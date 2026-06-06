@@ -45,3 +45,7 @@ outputs/instrumental/*
 
 outputs/voiceovers/*
 !outputs/voiceovers/.gitkeep
+
+# Streamlit logs
+*.log
+*.err
